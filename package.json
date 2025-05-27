@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "gulp": "^5.0.0",
+    "gulp-html": "^6.1.0",
     "gulp-htmlmin": "^5.0.1"
   }
 }
