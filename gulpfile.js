@@ -3,7 +3,9 @@ const {src, dest, watch, series} = require(`gulp`),
     htmlValidator = require(`gulp-html`),
     cssLinter = require(`gulp-stylelint`),
     cssCompressor = require(`gulp-csso`),
-    jsLinter = require(`gulp-eslint`);
+    jsLinter = require(`gulp-eslint`),
+    jsCompressor = require(`gulp-uglify`),
+    babel = require(`gulp-babel`);
 
 
 
@@ -27,7 +29,7 @@ let lintCSS = () => {
                 { formatter: `string`, console: true }
             ]
         }));
-}
+};
 
 let compileCSSForProd = () => {
     console.log(`Minifying CSS...`);
@@ -45,9 +47,30 @@ let lintJS = () => {
         .pipe(jsLinter.formatEach(`compact`));
 };
 
+let compressJSForProd = () => {
+    console.log(`Compressing JavaScript...`);
+    return src(`./temp/js/*.js`)
+        .pipe(jsCompressor())
+        .pipe(dest(`prod/js`))
+        .on(`end`, () => {
+            console.log(`JavaScript compression complete. Files saved to prod/js`);
+        });
+};
+
+let transpileJS = () => {
+    return src(`app/js/*.js`)
+        .pipe(babel())
+        .on(`error`, (err) => {
+            console.error(`Babel error:`, err);
+        })
+        .pipe(dest(`temp/js`));
+};
+
 
 exports.compressHTML = compressHTML;
 exports.validateHTML = validateHTML;
 exports.lintCSS = lintCSS;
 exports.compileCSSForProd = compileCSSForProd;
 exports.lintJS = lintJS;
+exports.transpileJS = transpileJS;
+exports.compressJSForProd = compressJSForProd;
