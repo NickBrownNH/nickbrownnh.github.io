@@ -5,7 +5,10 @@ const {src, dest, watch, series} = require(`gulp`),
     cssCompressor = require(`gulp-csso`),
     jsLinter = require(`gulp-eslint`),
     jsCompressor = require(`gulp-uglify`),
-    babel = require(`gulp-babel`);
+    babel = require(`gulp-babel`),
+    deleteAsync = require(`del`),
+    browserSync = require(`browser-sync`),
+    reload = browserSync.reload;
 
 
 
@@ -66,6 +69,36 @@ let transpileJS = () => {
         .pipe(dest(`temp/js`));
 };
 
+let serve = () => {
+    browserSync({
+        notify: true,
+        reloadDelay: 50,
+        browser: `default`,
+        server: {
+            baseDir: [
+                `temp`,
+                `./app`,
+                `./app/html`,
+            ]
+        }
+    });
+
+    watch(`app/js/*.js`, series(lintJS, transpileJS))
+        .on(`change`, reload);
+
+    watch(`app/css/*.css`, lintCSS)
+        .on(`change`, reload);
+
+    watch(`app/html/*.html`, validateHTML)
+        .on(`change`, reload);
+};
+
+async function clean() {
+    const foldersToDelete = await deleteAsync([`./temp`, `prod`]);
+
+    console.log(`The following directories were deleted:`, foldersToDelete);
+}
+
 
 exports.compressHTML = compressHTML;
 exports.validateHTML = validateHTML;
@@ -74,3 +107,12 @@ exports.compileCSSForProd = compileCSSForProd;
 exports.lintJS = lintJS;
 exports.transpileJS = transpileJS;
 exports.compressJSForProd = compressJSForProd;
+exports.serve = serve;
+exports.clean = clean;
+exports.build = series(
+    compressHTML,
+    compileCSSForProd,
+    transpileJS,
+    compressJSForProd
+);
+exports.default = serve;
