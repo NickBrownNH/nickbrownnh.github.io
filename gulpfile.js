@@ -16,7 +16,7 @@ const {src, dest, watch, series} = require(`gulp`),
 let compressHTML = () => {
     return src(`app/html/*.html`)
         .pipe(htmlCompressor({ collapseWhitespace: true }))
-        .pipe(dest(`prod`));
+        .pipe(dest(`./`));
 };
 
 let validateHTML = () => {
@@ -38,7 +38,7 @@ let compileCSSForProd = () => {
     console.log(`Minifying CSS...`);
     return src(`./app/css/*.css`)
         .pipe(cssCompressor())
-        .pipe(dest(`prod/css`))
+        .pipe(dest(`./css`))
         .on(`end`, () => {
             console.log(`CSS minification complete. Files saved to prod/css`);
         });
@@ -54,7 +54,7 @@ let compressJSForProd = () => {
     console.log(`Compressing JavaScript...`);
     return src(`./temp/js/*.js`)
         .pipe(jsCompressor())
-        .pipe(dest(`prod/js`))
+        .pipe(dest(`./js`))
         .on(`end`, () => {
             console.log(`JavaScript compression complete. Files saved to prod/js`);
         });
@@ -94,7 +94,7 @@ let serve = () => {
 };
 
 async function clean() {
-    const foldersToDelete = await deleteAsync([`./temp`, `prod`]);
+    const foldersToDelete = await deleteAsync([`./temp`, `prod`, `css`, `js`, `index.html`, `about.html`, `projects.html`, `contact.html`]);
 
     console.log(`The following directories were deleted:`, foldersToDelete);
 }

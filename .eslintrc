@@ -8,7 +8,7 @@
     "quotes": [2, "backtick"],
     "semi": [2, "always"],
     "linebreak-style": [2, "unix"],
-    "max-len": [1, 85]
+    "max-len": [1, 999]
   },
   "env": {
     "es6": true,

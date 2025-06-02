@@ -11,7 +11,6 @@ body {
   background-repeat: no-repeat;
 }
 
-
 .split-container {
   display: flex;
   height: 100vh;
@@ -75,6 +74,18 @@ body {
   color: #bdb9d7;
 }
 
+.main-nav {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.4vw;
+  letter-spacing: 2px;
+  transition: color .2s;
+}
+
+.main-nav:hover {
+  color: #bdb9d7;
+}
+
 .right {
   flex: 1; /* 1/3 of the width */
   align-items: flex-start;
@@ -103,6 +114,108 @@ nav li span {
   color: #bdb9d7;
 }
 
+/* Top navigation bar */
+.top-nav {
+  width: 100vw;
+  background: rgba(224, 224, 224, .5);
+  border: 4px solid #eaeaea;
+  padding-top: 1vw;
+  margin-bottom: 1vw;
+  box-sizing: border-box;
+}
+
+.top-nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20vw;
+  list-style: none;
+  margin: 0;
+}
+
+.top-nav li a {
+  color: #222;
+  text-decoration: none;
+  padding-top: 25px;
+  font-size: 2.5vw;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 2px;
+  transition: color .2s;
+}
+
+.top-nav li a:hover {
+  color: #bdb9d7;
+}
+
+/* About panels */
+.about-panels {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2vw;
+  width: 96vw;
+  margin: 0 auto;
+}
+
+.about-left,
+.about-right {
+  background: rgba(224, 224, 224, .5);
+  border: 4px solid #eaeaea;
+  box-sizing: border-box;
+  padding: 1.5vw;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.about-left {
+  flex: .8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-left h2 {
+  font-size: 2vw;
+  margin-bottom: 2vw;
+  color: #222;
+}
+
+.picture-box {
+  width: 75%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vw;
+  background: black; /* Solid background color */
+  border-radius: 8px;   /* Optional: rounded corners */
+}
+
+.picture-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 1;
+  border: 4px solid #eaeaea;
+  border-radius: 8px; /* Optional: rounded corners for the image */
+}
+
+.about-right {
+  flex: 1.2;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-right p {
+  font-size: 1.5vw;
+  color: #222;
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
 @media (max-width: 900px) {
   .split-container {
     flex-direction: column;
@@ -124,6 +237,23 @@ nav li span {
   .links a,
   nav li,
   nav li span {
+    font-size: 4vw;
+  }
+
+  .about-panels {
+    flex-direction: column;
+    align-items: center;
+    gap: 4vw;
+  }
+
+  .about-left,
+  .about-right {
+    width: 90vw;
+    margin-bottom: 2vw;
+  }
+
+  .top-nav ul {
+    gap: 5vw;
     font-size: 4vw;
   }
 }
