@@ -79,6 +79,7 @@ let serve = () => {
                 `temp`,
                 `./app`,
                 `./app/html`,
+                `./app/imgs`,
             ]
         }
     });
