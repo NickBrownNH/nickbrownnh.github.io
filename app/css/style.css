@@ -311,6 +311,29 @@ nav li span {
   text-decoration: underline;
 }
 
+/* Contact icon */
+.contact-icon {
+  width: 20vw;
+  height: 20vh;
+  object-fit: contain;
+}
+
+/* Contact links */
+.contact-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4vw; /* Even horizontal spacing between icons */
+  margin-top: 2vw;
+}
+
+.contact-container h1 {
+  font-size: 3vw;
+  text-align: center;
+  margin-bottom: 2vw;
+}
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .split-container {
