@@ -44,7 +44,6 @@ function nextSlide(carousel) {
     showSlide(carousel, currentIndex[carousel]);
 }
 
-print(`Project carousels initialized with images:`, projectImages);
 // Initialize all carousels to show their first image on page load
 window.addEventListener(`DOMContentLoaded`, () => {
     Object.keys(projectImages).forEach(carousel => {

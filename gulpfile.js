@@ -95,7 +95,7 @@ let serve = () => {
 };
 
 async function clean() {
-    const foldersToDelete = await deleteAsync([`./temp`, `prod`, `css`, `js`, `index.html`, `about.html`, `projects.html`, `contact.html`]);
+    const foldersToDelete = await deleteAsync([`./temp`, `prod`, `css/*.css`, `js/*.js`, `index.html`, `about.html`, `projects.html`, `contact.html`]);
 
     console.log(`The following directories were deleted:`, foldersToDelete);
 }
