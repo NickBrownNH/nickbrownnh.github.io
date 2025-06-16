@@ -62,7 +62,7 @@ let compressJSForProd = () => {
 
 let transpileJS = () => {
     return src(`app/js/*.js`)
-        .pipe(babel())
+        .pipe(dest(`temp/js`))
         .on(`error`, (err) => {
             console.error(`Babel error:`, err);
         })
@@ -114,6 +114,5 @@ exports.build = series(
     compressHTML,
     compileCSSForProd,
     transpileJS,
-    compressJSForProd
 );
 exports.default = serve;
