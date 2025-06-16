@@ -300,6 +300,17 @@ nav li span {
   justify-content: center;
 }
 
+.project-desc h3 a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.project-desc h3 a:hover {
+  color: #bdb9d7;
+  text-decoration: underline;
+}
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .split-container {
